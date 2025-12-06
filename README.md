@@ -6,7 +6,7 @@ Team_1_Exceptional
 ### 🏆 Capstone Project | Team Exceptional (Group 1)
 **Course:** ITAI 2277 (Fall 2025)  
 **Professor:** Sitaram Ayyagari  
-**Authors:** Miguel Mora, Richard Evans, Akinbobola Akinpelu, Jade Sanchez, Olugbenga Adegoroye
+**Authors:** Miguel Mora, Richard Evans, Akinbobola Akinpelu, Olugbenga Adegoroye
 
 ---
 
