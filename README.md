@@ -39,3 +39,13 @@ graph LR
 
 * **Latency:** < 100ms (Real-time capable)
 * **Business Impact:** Estimated 40% reduction in downtime and 25% cost savings.
+---
+
+## 🎥 Formal Project Presentation
+You can view our full project presentation slides here:
+[**View Final Presentation Slides**](./Team%201_CapStoneFinal_FinalPresentation_ITAI2277.pptx)
+
+*(Note: Please download the file to view the full PowerPoint)*
+
+---
+  
