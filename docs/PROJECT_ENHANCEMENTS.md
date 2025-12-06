@@ -34,9 +34,11 @@ feature_columns = selected_features
 ## 2. Model Optimization (Grid Search)
 **The Change:** We moved from "static" hyperparameters to dynamic optimization using extensive Grid Search.
 
-* **Old Approach:** We initially used a fixed Random Forest model with basic settings (n_estimators=100, max_depth=10). This was sufficient for a baseline but failed to capture complex non-linear patterns.
-* **New Approach:** We implemented GridSearchCV to test hundreds of hyperparameter combinations systematically. We expanded the search space to include deeper trees and more estimators.
-* **Result:** The optimal parameters found (n_estimators=500, max_depth=25) were significantly more robust, contributing heavily to the accuracy jump to 98%.
+* **Old Approach:** We initially used a fixed Random Forest model with basic settings (`n_estimators=100`, `max_depth=10`). This was sufficient for a baseline but failed to capture complex non-linear patterns.
+* **New Approach:** We implemented `GridSearchCV` to test hundreds of hyperparameter combinations systematically. We expanded the search space to include deeper trees and more estimators.
+* **Result:** The optimal parameters found (`n_estimators=500`, `max_depth=25`) were significantly more robust, contributing heavily to the accuracy jump to 98%.
+
+```python
 # Old Code (Phase 4)
 rf_model = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
 
@@ -54,3 +56,4 @@ grid_search = GridSearchCV(
     scoring='accuracy',
     n_jobs=-1
 )
+grid_search.fit(X_scaled, y_train)
