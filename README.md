@@ -53,7 +53,7 @@ You can view our full project presentation slides here:
 This repository includes a **Live Dashboard** built with Streamlit. This dashboard simulates real-time sensor data ingestion and shows the AI model predicting engine health.
 
 ### Dashboard Layout
-```mermaid
+
 graph TD
     subgraph Browser_Window ["🖥️ Web Browser Window"]
         direction TB
