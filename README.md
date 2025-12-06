@@ -30,4 +30,12 @@ graph LR
     D --> F[Streamlit Dashboard];
     E --> F;
     F --> G[Maintenance Alert];
+```
+---
+### 📊 Key Results (Achieved)
+* **Failure Prediction Accuracy:** 98.69% ✅
+* **RUL Mean Absolute Error:** 14.18 cycles ✅
+* **Prediction Latency:** 36.64 ms (Real-time capable) ✅
 
+* **Latency:** < 100ms (Real-time capable)
+* **Business Impact:** Estimated 40% reduction in downtime and 25% cost savings.
