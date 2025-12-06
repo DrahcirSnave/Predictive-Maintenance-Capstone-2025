@@ -7,15 +7,6 @@ Here is a breakdown of the specific code enhancements that drove this success.
 
 ---
 
-# 🚀 Technical Enhancements & Performance Optimization
-
-### **Overview**
-Between Phase 4 and the Final Capstone delivery, our team implemented critical updates to the code pipeline. These changes improved our **Failure Prediction Accuracy from 69% to 98.7%** and reduced our **RUL Mean Absolute Error by ~75%**.
-
-Here is a breakdown of the specific code enhancements that drove this success.
-
----
-
 ## 1. Smarter Feature Selection
 **The Change:** Instead of using all sensors or arbitrarily picking the first few, we implemented statistical feature selection.
 
@@ -73,5 +64,9 @@ grid_search.fit(X_scaled, y_train)
 **New Approach:** We created a list of LSTM_FOCUSED_PARAMS and iterated through them to find the best configuration. We tested variations in layer count (1 vs 2 vs 3 layers) and unit density (64 vs 128 vs 256 units) to balance complexity with performance.
 
 ---
-# 📊 Performance Comparison TableMetricPhase 4 CodeFinal CodeImprovementAccuracy68.7%98.7%🔼 +30%RUL Error (MAE)57.4 cycles14.2 cycles🔽 -43 cyclesFeature Count~30 (Manual)25 (Selected)OptimizedPrediction Latency38.4 ms36.6 ms⚡ Faster
-
+# 📊 Performance Comparison TableMetricPhase 4 CodeFinal 
+Metric,Phase 4 Code,Final Code,Improvement
+Accuracy,68.7%,98.7%,🔼 +30%
+RUL Error (MAE),57.4 cycles,14.2 cycles,🔽 -43 cycles
+Feature Count,~30 (Manual),25 (Selected),Optimized
+Prediction Latency,38.4 ms,36.6 ms,⚡ Faster
