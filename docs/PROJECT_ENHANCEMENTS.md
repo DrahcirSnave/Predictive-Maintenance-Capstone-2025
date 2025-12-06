@@ -64,9 +64,10 @@ grid_search.fit(X_scaled, y_train)
 **New Approach:** We created a list of LSTM_FOCUSED_PARAMS and iterated through them to find the best configuration. We tested variations in layer count (1 vs 2 vs 3 layers) and unit density (64 vs 128 vs 256 units) to balance complexity with performance.
 
 ---
-# 📊 Performance Comparison TableMetricPhase 4 CodeFinal 
-Metric,Phase 4 Code,Final Code,Improvement
-Accuracy,68.7%,98.7%,🔼 +30%
-RUL Error (MAE),57.4 cycles,14.2 cycles,🔽 -43 cycles
-Feature Count,~30 (Manual),25 (Selected),Optimized
-Prediction Latency,38.4 ms,36.6 ms,⚡ Faster
+# 📊 Performance Comparison TableMetric 
+| Metric | Phase 4 Code | Final Code | Improvement |
+| :--- | :--- | :--- | :--- |
+| **Accuracy** | > 68.7% | **98.69%** | 🔼 +30%|
+| **RUL Error (MAE)** | < 57.4 cycles | **14.28 cycles** | 🔽 -43 cycles |
+| **Feature Count** | < ~30 (Manual) | **25 (Selected)** | Optimized |
+| **Prediction Latency** | < 38.4 ms | **36.6 ms** | ⚡ Faster |
