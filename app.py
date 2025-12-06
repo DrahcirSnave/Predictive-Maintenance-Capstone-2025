@@ -1,1 +1,9 @@
-
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+shap
+streamlit
+requests
