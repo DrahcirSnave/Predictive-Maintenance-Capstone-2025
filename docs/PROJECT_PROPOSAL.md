@@ -28,7 +28,7 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 -	**Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
   
 -	**Preprocessing:**
-  - Pandas for data cleaning (remove NaNs, outliers via IQR method).
+   -Pandas for data cleaning (remove NaNs, outliers via IQR method).
   -	NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
   -	Normalization using MinMaxScaler to ensure model stability.
  	
