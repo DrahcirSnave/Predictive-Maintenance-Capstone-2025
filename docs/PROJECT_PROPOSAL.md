@@ -10,64 +10,69 @@ Unplanned equipment failures in industries like manufacturing and energy cause s
 There are predictive maintenance solutions available in the market (e.g. IBM Maximo, GE Predix), but most of them are costly, need proprietary infrastructure, or the AI model is non-transparent. The solution is diﬀerentiated by an open-source basis, explainability (using SHAP), and cost-eﬀective provisions when it comes to small to mid-size businesses.
 
 **Objectives**
-•	Develop a machine learning model achieving >85% accuracy in predicting equipment failures.
-•	Create a Streamlit dashboard for real-time monitoring, failure alerts, and scenario testing.
-•	Validate system performance on a public dataset, targeting 40% downtime reduction and 25% cost savings.
-•	Produce a scalable prototype with modular code, documented in a GitHub repository.
-•	Deliver a portfolio presentation demonstrating technical proﬁciency and industry relevance.
-•	Ensure ethical AI deployment with transparency, fairness, and minimal environmental impact.
+- Develop a machine learning model achieving >85% accuracy in predicting equipment failures.
+- Create a Streamlit dashboard for real-time monitoring, failure alerts, and scenario testing.
+-	Validate system performance on a public dataset, targeting 40% downtime reduction and 25% cost savings.
+-	Produce a scalable prototype with modular code, documented in a GitHub repository.
+-	Deliver a portfolio presentation demonstrating technical proﬁciency and industry relevance.
+-	Ensure ethical AI deployment with transparency, fairness, and minimal environmental impact.
 
-T**echnical Approach**
+**Technical Approach**
 
 **Data Acquisition and Processing**
  
-•	**Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
-•	**Preprocessing:**
-** Pandas for data cleaning (remove NaNs, outliers via IQR method).
-o	NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
-o	Normalization using MinMaxScaler to ensure model stability.
-•	Volume: ~100,000 records for training, 20,000 for testing, ensuring robust validation.
-Model Development
-•	Algorithms:
-o	Random Forest Classiﬁer: 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
-o	LSTM Neural Network: 2 layers, 64 units each, for time-series forecasting of remaining useful life (RUL). Sequence length=50 timesteps, trained with Adam optimizer (learning rate=0.001).
-o	Ensemble: Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
-•	Frameworks: Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
-•	Explainability: SHAP (Shapley Additive Explanations) to compute feature importance, ensuring transparency for maintenance teams.
-System Architecture
-•	Backend: Python pipeline with Apache Kafka (v3.8.0) for streaming sensor data (if scaled), Flask for model inference API, and PostgreSQL for historical data storage.
-•	Frontend: Streamlit (v1.39.0) dashboard displaying:
-o	Time-series plots (Matplotlib/Seaborn) of sensor data.
-o	Failure probability (0-100%) with alert thresholds (>80% triggers a warning).
-o	RUL predictions in hours/days.
-•	Deployment:
-o	Prototype runs on Google Colab (16GB RAM, T4 GPU).
-o	Production-ready Docker container (Python 3.11 base image) for scalability.
- 
-o	Code versioned on GitHub with CI/CD via GitHub Actions for automated testing.
-Reﬁnements
-•	Bias Mitigation: Fairness-aware preprocessing using aif360 to detect and correct biases in failure predictions across equipment types.
-•	Performance Optimization: Batch inference for low-latency predictions (<100ms per batch), tested on edge devices (e.g., Raspberry Pi 4 simulation).
-•	Scalability: Modular design supports multi-equipment environments; cloud-ready with AWS ECS compatibility.
-Timeline and Milestone Planning
-•	Weeks 1-3: Planning and Setup (08/21/2025 - 09/09/2025)
-o	Tasks: Dataset acquisition, literature review, environment setup (Python 3.11, dependencies).
-o	Deliverable: Requirements document and data schema (CSV format).
-•	Weeks 4-6: Data and Model Development (09/10/2025 - 10/07/2025)
-o	Tasks: EDA, feature engineering, train baseline Random Forest (accuracy >80%) and LSTM (MAE <10 hours for RUL).
-o	Deliverable: Jupyter Notebook with EDA and model checkpoints.
-•	Weeks 7-10: System Integration (10/08/2025 - 10/28/2025)
-o	Tasks: Build Streamlit dashboard, integrate models, test end-to-end pipeline.
-o	Deliverable: Functional prototype demo (video recording).
-•	Weeks 9-10: Testing and Optimization (10/29/2025 - 11/18/2025)
-o	Tasks: Validate on test set, achieve >85% accuracy, 80% precision/recall, <2s dashboard latency.
-o	Deliverable: Performance report with confusion matrix, ROC-AUC, and SHAP plots.
-•	Weeks 11-12: Finalization (11/19/2025 - 12/05/2025)
-o	Tasks: Reﬁne code, document in README.md, prepare 10-minute presentation.
-o	Deliverable: GitHub repository, ﬁnal report (PDF), portfolio slides (PowerPoint).
-Resources Required
-•	Hardware: Laptop with 8GB RAM; Google Colab GPU.
-•	Software: Free libraries (Pandas 2.2.3, NumPy 2.1.2, Scikit-learn, TensorFlow, Streamlit, SHAP 0.46.0).
+-	**Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
+-	**Preprocessing:**
+-- Pandas for data cleaning (remove NaNs, outliers via IQR method).
+--	NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
+--	Normalization using MinMaxScaler to ensure model stability.
+- **Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
+
+**Model Development**
+- **Algorithms:**
+-- **Random Forest Classiﬁer:** 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
+-- **LSTM Neural Network:** 2 layers, 64 units each, for time-series forecasting of remaining useful life (RUL). Sequence length=50 timesteps, trained with Adam optimizer (learning rate=0.001).
+-- **Ensemble:** Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
+- **Frameworks:** Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
+- **Explainability:** SHAP (Shapley Additive Explanations) to compute feature importance, ensuring transparency for maintenance teams.
+  
+**System Architecture**
+- **Backend:** Python pipeline with Apache Kafka (v3.8.0) for streaming sensor data (if scaled), Flask for model inference API, and PostgreSQL for historical data storage.
+- **Frontend:** Streamlit (v1.39.0) dashboard displaying:
+-- Time-series plots (Matplotlib/Seaborn) of sensor data.
+--	Failure probability (0-100%) with alert thresholds (>80% triggers a warning).
+--	RUL predictions in hours/days.
+  
+**Deployment:**
+--	Prototype runs on Google Colab (16GB RAM, T4 GPU).
+-- Production-ready Docker container (Python 3.11 base image) for scalability.
+-- Code versioned on GitHub with CI/CD via GitHub Actions for automated testing.
+
+**Reﬁnements**
+- **Bias Mitigation:** Fairness-aware preprocessing using aif360 to detect and correct biases in failure predictions across equipment types.
+- **Performance Optimization:** Batch inference for low-latency predictions (<100ms per batch), tested on edge devices (e.g., Raspberry Pi 4 simulation).
+- **Scalability:** Modular design supports multi-equipment environments; cloud-ready with AWS ECS compatibility.
+
+**Timeline and Milestone Planning**
+- **Weeks 1-3:** Planning and Setup (08/21/2025 - 09/09/2025)
+-- Tasks: Dataset acquisition, literature review, environment setup (Python 3.11, dependencies).
+-- Deliverable: Requirements document and data schema (CSV format).
+- **Weeks 4-6:** Data and Model Development (09/10/2025 - 10/07/2025)
+-- Tasks: EDA, feature engineering, train baseline Random Forest (accuracy >80%) and LSTM (MAE <10 hours for RUL).
+-- Deliverable: Jupyter Notebook with EDA and model checkpoints.
+- **Weeks 7-10:** System Integration (10/08/2025 - 10/28/2025)
+-- Tasks: Build Streamlit dashboard, integrate models, test end-to-end pipeline.
+-- Deliverable: Functional prototype demo (video recording).
+- **Weeks 9-10:** Testing and Optimization (10/29/2025 - 11/18/2025)
+--Tasks: Validate on test set, achieve >85% accuracy, 80% precision/recall, <2s dashboard latency.
+-- Deliverable: Performance report with confusion matrix, ROC-AUC, and SHAP plots.
+- **Weeks 11-12:** Finalization (11/19/2025 - 12/05/2025)
+-- Tasks: Reﬁne code, document in README.md, prepare 10-minute presentation.
+-- Deliverable: GitHub repository, ﬁnal report (PDF), portfolio slides (PowerPoint).
+
+**Resources Required**
+- **Hardware:** Laptop with 8GB RAM; Google Colab GPU.
+- **Software:** Free libraries (Pandas 2.2.3, NumPy 2.1.2, Scikit-learn, TensorFlow, Streamlit, SHAP 0.46.0).
  
 •	Data: Public NASA dataset (no cost); synthetic data generation if needed.
 •	Personnel: 5 team members (Olu, Richard, Miquel, and Akinbobola).
