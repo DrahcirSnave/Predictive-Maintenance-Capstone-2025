@@ -28,9 +28,9 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 - **Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
   
 - **Preprocessing:**
-&nbsp;&nbsp;&nbsp;&nbsp;Pandas for data cleaning (remove NaNs, outliers via IQR method).
-&nbsp;&nbsp;&nbsp;&nbsp;NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
-&nbsp;&nbsp;&nbsp;&nbsp;Normalization using MinMaxScaler to ensure model stability.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pandas for data cleaning (remove NaNs, outliers via IQR method).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normalization using MinMaxScaler to ensure model stability.
  	
 - **Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
 
@@ -40,13 +40,13 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Random Forest Classiﬁer:** 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
 
-&nbsp;&nbsp;&nbsp;&nbsp;**LSTM Neural Network:** 2 layers, 64 units each, for time-series forecasting of remaining useful life (RUL). Sequence length=50 timesteps, trained with Adam optimizer (learning rate=0.001).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LSTM Neural Network:** 2 layers, 64 units each, for time-series forecasting of remaining useful life (RUL). Sequence length=50 timesteps, trained with Adam optimizer (learning rate=0.001).
 
-&nbsp;&nbsp;&nbsp;&nbsp;**Ensemble:** Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;;**Ensemble:** Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
 
--**Frameworks:** Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
+- **Frameworks:** Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
   
--**Explainability:** SHAP (Shapley Additive Explanations) to compute feature importance, ensuring transparency for maintenance teams.
+- **Explainability:** SHAP (Shapley Additive Explanations) to compute feature importance, ensuring transparency for maintenance teams.
   
 **SYSTEM ARCHITECTURE**
 - **Backend:** Python pipeline with Apache Kafka (v3.8.0) for streaming sensor data (if scaled), Flask for model inference API, and PostgreSQL for historical data storage.
