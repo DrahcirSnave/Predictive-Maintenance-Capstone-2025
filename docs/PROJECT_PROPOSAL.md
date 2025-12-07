@@ -9,9 +9,11 @@ This capstone project proposes the development of an AI-powered predictive maint
 Unplanned equipment failures in industries like manufacturing and energy cause signiﬁcant losses, with downtime costing up to $50 billion annually across sectors (McKinsey, 2023). Traditional maintenance (reactive or scheduled) is ineﬃcient, leading to 20-30% over-maintenance or unexpected breakdowns. This project addresses these challenges by developing an AI-driven PdM system that predicts failures using sensor data, reducing downtime and extending equipment lifespan. It applies machine learning, data processing, and UI development skills from the major, targeting equipment like turbines and pumps.
 
 **Competitive Landscape**
+
 There are predictive maintenance solutions available in the market (e.g. IBM Maximo, GE Predix), but most of them are costly, need proprietary infrastructure, or the AI model is non-transparent. The solution is diﬀerentiated by an open-source basis, explainability (using SHAP), and cost-eﬀective provisions when it comes to small to mid-size businesses.
 
 **Objectives**
+
 - Develop a machine learning model achieving >85% accuracy in predicting equipment failures.
 - Create a Streamlit dashboard for real-time monitoring, failure alerts, and scenario testing.
 -	Validate system performance on a public dataset, targeting 40% downtime reduction and 25% cost savings.
@@ -24,10 +26,12 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 **Data Acquisition and Processing**
  
 -	**Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
+  
 -	**Preprocessing:**
 -- Pandas for data cleaning (remove NaNs, outliers via IQR method).
 --	NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
 --	Normalization using MinMaxScaler to ensure model stability.
+ 	
 - **Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
 
 **Model Development**
