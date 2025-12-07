@@ -25,12 +25,12 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 
 **Data Acquisition and Processing**
  
--**Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
+- **Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
   
 - **Preprocessing:**
--  Pandas for data cleaning (remove NaNs, outliers via IQR method).
--  NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
--  Normalization using MinMaxScaler to ensure model stability.
+&nbsp;&nbsp;&nbsp;&nbsp;Pandas for data cleaning (remove NaNs, outliers via IQR method).
+&nbsp;&nbsp;&nbsp;&nbsp;NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
+&nbsp;&nbsp;&nbsp;&nbsp;Normalization using MinMaxScaler to ensure model stability.
  	
 - **Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
 
@@ -38,26 +38,26 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 
 - **Algorithms:**
   
-- **Random Forest Classiﬁer:** 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
+&nbsp;&nbsp;&nbsp;&nbsp;**Random Forest Classiﬁer:** 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
 
-- **LSTM Neural Network:** 2 layers, 64 units each, for time-series forecasting of remaining useful life (RUL). Sequence length=50 timesteps, trained with Adam optimizer (learning rate=0.001).
+&nbsp;&nbsp;&nbsp;&nbsp;**LSTM Neural Network:** 2 layers, 64 units each, for time-series forecasting of remaining useful life (RUL). Sequence length=50 timesteps, trained with Adam optimizer (learning rate=0.001).
 
-- **Ensemble:** Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
+&nbsp;&nbsp;&nbsp;&nbsp;**Ensemble:** Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
 
-**Frameworks:* Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
+**Frameworks:** Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
   
-**Explainability:* SHAP (Shapley Additive Explanations) to compute feature importance, ensuring transparency for maintenance teams.
+**Explainability:** SHAP (Shapley Additive Explanations) to compute feature importance, ensuring transparency for maintenance teams.
   
-**System Architecture**
+**SYSTEM ARCHITECTURE**
 - **Backend:** Python pipeline with Apache Kafka (v3.8.0) for streaming sensor data (if scaled), Flask for model inference API, and PostgreSQL for historical data storage.
   
 - **Frontend:** Streamlit (v1.39.0) dashboard displaying:
   
--  Time-series plots (Matplotlib/Seaborn) of sensor data.
+&nbsp;&nbsp;&nbsp;&nbsp;Time-series plots (Matplotlib/Seaborn) of sensor data.
 
--  Failure probability (0-100%) with alert thresholds (>80% triggers a warning).
+&nbsp;&nbsp;&nbsp;&nbsp;Failure probability (0-100%) with alert thresholds (>80% triggers a warning).
 
--  RUL predictions in hours/days.
+-&nbsp;&nbsp;&nbsp;&nbsp;RUL predictions in hours/days.
   
 **Deployment:**
 
