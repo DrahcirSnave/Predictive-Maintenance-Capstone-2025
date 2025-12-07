@@ -1,9 +1,11 @@
 **Project Proposal: AI-Powered Predictive Maintenance System for Industrial Equipment**
 
 **Executive Summary**
+
 This capstone project proposes the development of an AI-powered predictive maintenance system (PdM) for industrial equipment, utilizing machine learning to forecast failures, optimize maintenance schedules, and minimize operational costs. The system integrates real-time IoT sensor data (vibration, temperature, pressure) with historical maintenance logs, utilizing Random Forests for failure classiﬁcation and LSTM neural networks for time-series forecasting. A Streamlit dashboard will provide real-time visualizations and decision support. The project, spanning 12 weeks, aims to achieve >85% prediction accuracy, reduce downtime by 40%, and save 25% in maintenance costs, as validated on a public dataset (NASA Turbofan Engine Degradation). Deliverables include a GitHub-hosted prototype, comprehensive documentation, and a presentation showcasing alignment with data science and software engineering coursework. Ethical AI practices, scalability, and robust risk mitigation ensure a production-ready solution.
 
 **Introduction and Background**
+
 Unplanned equipment failures in industries like manufacturing and energy cause signiﬁcant losses, with downtime costing up to $50 billion annually across sectors (McKinsey, 2023). Traditional maintenance (reactive or scheduled) is ineﬃcient, leading to 20-30% over-maintenance or unexpected breakdowns. This project addresses these challenges by developing an AI-driven PdM system that predicts failures using sensor data, reducing downtime and extending equipment lifespan. It applies machine learning, data processing, and UI development skills from the major, targeting equipment like turbines and pumps.
 
 **Competitive Landscape**
