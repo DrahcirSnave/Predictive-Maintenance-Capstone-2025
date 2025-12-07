@@ -30,63 +30,104 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 -	**Preprocessing:**
   
 -- Pandas for data cleaning (remove NaNs, outliers via IQR method).
+
 --	NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
+
 --	Normalization using MinMaxScaler to ensure model stability.
  	
 - **Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
 
 **Model Development**
+
 - **Algorithms:**
+  
 -- **Random Forest Classiﬁer:** 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
+
 -- **LSTM Neural Network:** 2 layers, 64 units each, for time-series forecasting of remaining useful life (RUL). Sequence length=50 timesteps, trained with Adam optimizer (learning rate=0.001).
+
 -- **Ensemble:** Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
+
 - **Frameworks:** Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
+- 
 - **Explainability:** SHAP (Shapley Additive Explanations) to compute feature importance, ensuring transparency for maintenance teams.
   
 **System Architecture**
 - **Backend:** Python pipeline with Apache Kafka (v3.8.0) for streaming sensor data (if scaled), Flask for model inference API, and PostgreSQL for historical data storage.
+  
 - **Frontend:** Streamlit (v1.39.0) dashboard displaying:
+  
 -- Time-series plots (Matplotlib/Seaborn) of sensor data.
+
 --	Failure probability (0-100%) with alert thresholds (>80% triggers a warning).
+
 --	RUL predictions in hours/days.
   
 **Deployment:**
+
 --	Prototype runs on Google Colab (16GB RAM, T4 GPU).
+
 -- Production-ready Docker container (Python 3.11 base image) for scalability.
+
 -- Code versioned on GitHub with CI/CD via GitHub Actions for automated testing.
 
 **Reﬁnements**
+
 - **Bias Mitigation:** Fairness-aware preprocessing using aif360 to detect and correct biases in failure predictions across equipment types.
+  
 - **Performance Optimization:** Batch inference for low-latency predictions (<100ms per batch), tested on edge devices (e.g., Raspberry Pi 4 simulation).
+  
 - **Scalability:** Modular design supports multi-equipment environments; cloud-ready with AWS ECS compatibility.
 
 **Timeline and Milestone Planning**
+
 - **Weeks 1-3:** Planning and Setup (08/21/2025 - 09/09/2025)
+  
 -- Tasks: Dataset acquisition, literature review, environment setup (Python 3.11, dependencies).
+
 -- Deliverable: Requirements document and data schema (CSV format).
+
 - **Weeks 4-6:** Data and Model Development (09/10/2025 - 10/07/2025)
+  
 -- Tasks: EDA, feature engineering, train baseline Random Forest (accuracy >80%) and LSTM (MAE <10 hours for RUL).
+
 -- Deliverable: Jupyter Notebook with EDA and model checkpoints.
+
 - **Weeks 7-10:** System Integration (10/08/2025 - 10/28/2025)
+
 -- Tasks: Build Streamlit dashboard, integrate models, test end-to-end pipeline.
+
 -- Deliverable: Functional prototype demo (video recording).
+
 - **Weeks 9-10:** Testing and Optimization (10/29/2025 - 11/18/2025)
+
 --Tasks: Validate on test set, achieve >85% accuracy, 80% precision/recall, <2s dashboard latency.
+
 -- Deliverable: Performance report with confusion matrix, ROC-AUC, and SHAP plots.
+
 - **Weeks 11-12:** Finalization (11/19/2025 - 12/05/2025)
+  
 -- Tasks: Reﬁne code, document in README.md, prepare 10-minute presentation.
+
 -- Deliverable: GitHub repository, ﬁnal report (PDF), portfolio slides (PowerPoint).
 
 **Resources Required**
+
 - **Hardware:** Laptop with 8GB RAM; Google Colab GPU.
+  
 - **Software:** Free libraries (Pandas 2.2.3, NumPy 2.1.2, Scikit-learn, TensorFlow, Streamlit, SHAP 0.46.0).
  
-•	Data: Public NASA dataset (no cost); synthetic data generation if needed.
-•	Personnel: 5 team members (Olu, Richard, Miquel, and Akinbobola).
-•	Budget: ~$20 for cloud credits; no other costs.
-Success Metrics
-•	Quantitative:
-o	Model: Accuracy >85%, Precision/Recall >80%, F1-score >0.82, RUL MAE <20 hours.
+- **Data:** Public NASA dataset (no cost); synthetic data generation if needed.
+  
+-	**Personnel:** 5 team members (Olu, Richard, Miquel, and Akinbobola).
+  
+- **Budget:** ~$20 for cloud credits; no other costs.
+  
+**Success Metrics**
+
+- **Quantitative:**
+  
+-- Model: Accuracy >85%, Precision/Recall >80%, F1-score >0.82, RUL MAE <20 hours.
+
 o	Operational: 40% downtime reduction, 25% maintenance cost savings (simulated via cost models).
 o	System: Dashboard latency <2s, 99% uptime during testing.
 •	Qualitative:
