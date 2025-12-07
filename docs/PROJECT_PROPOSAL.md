@@ -12,7 +12,7 @@ Unplanned equipment failures in industries like manufacturing and energy cause s
 
 There are predictive maintenance solutions available in the market (e.g. IBM Maximo, GE Predix), but most of them are costly, need proprietary infrastructure, or the AI model is non-transparent. The solution is diﬀerentiated by an open-source basis, explainability (using SHAP), and cost-eﬀective provisions when it comes to small to mid-size businesses.
 
-**Objectives**
+**OBJECTIVES**
 
 - Develop a machine learning model achieving >85% accuracy in predicting equipment failures.
 - Create a Streamlit dashboard for real-time monitoring, failure alerts, and scenario testing.
@@ -21,22 +21,22 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 - Deliver a portfolio presentation demonstrating technical proﬁciency and industry relevance.
 - Ensure ethical AI deployment with transparency, fairness, and minimal environmental impact.
 
-**Technical Approach**
+**TECHNICAL APPROACH**
 
-  **Data Acquisition and Processing**
+**Data Acquisition and Processing**
  
-**Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
+-**Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
   
-**Preprocessing:**
+- **Preprocessing:**
 -  Pandas for data cleaning (remove NaNs, outliers via IQR method).
 -  NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
 -  Normalization using MinMaxScaler to ensure model stability.
  	
-**Volume:* ~100,000 records for training, 20,000 for testing, ensuring robust validation.
+- **Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
 
-**Model Development**
+**MODEL DEVELOPMENT**
 
-**Algorithms:*
+- **Algorithms:**
   
 - **Random Forest Classiﬁer:** 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
 
