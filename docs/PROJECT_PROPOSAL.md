@@ -14,29 +14,29 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 
 **Objectives**
 
--Develop a machine learning model achieving >85% accuracy in predicting equipment failures.
--Create a Streamlit dashboard for real-time monitoring, failure alerts, and scenario testing.
--Validate system performance on a public dataset, targeting 40% downtime reduction and 25% cost savings.
--Produce a scalable prototype with modular code, documented in a GitHub repository.
--Deliver a portfolio presentation demonstrating technical proﬁciency and industry relevance.
--Ensure ethical AI deployment with transparency, fairness, and minimal environmental impact.
+- Develop a machine learning model achieving >85% accuracy in predicting equipment failures.
+- Create a Streamlit dashboard for real-time monitoring, failure alerts, and scenario testing.
+- Validate system performance on a public dataset, targeting 40% downtime reduction and 25% cost savings.
+- Produce a scalable prototype with modular code, documented in a GitHub repository.
+- Deliver a portfolio presentation demonstrating technical proﬁciency and industry relevance.
+- Ensure ethical AI deployment with transparency, fairness, and minimal environmental impact.
 
 **Technical Approach**
 
 **Data Acquisition and Processing**
  
--**Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
+- **Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
   
--**Preprocessing:**
+- **Preprocessing:**
 -  Pandas for data cleaning (remove NaNs, outliers via IQR method).
 -  NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
 -  Normalization using MinMaxScaler to ensure model stability.
  	
--**Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
+- **Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
 
 **Model Development**
 
--**Algorithms:**
+- **Algorithms:**
   
 -  **Random Forest Classiﬁer:** 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
 
@@ -44,7 +44,7 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 
 -  **Ensemble:** Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
 
--**Frameworks:** Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
+- **Frameworks:** Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
   
 - **Explainability:** SHAP (Shapley Additive Explanations) to compute feature importance, ensuring transparency for maintenance teams.
   
@@ -53,11 +53,11 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
   
 - **Frontend:** Streamlit (v1.39.0) dashboard displaying:
   
--- Time-series plots (Matplotlib/Seaborn) of sensor data.
+-  Time-series plots (Matplotlib/Seaborn) of sensor data.
 
---	Failure probability (0-100%) with alert thresholds (>80% triggers a warning).
+-  Failure probability (0-100%) with alert thresholds (>80% triggers a warning).
 
---	RUL predictions in hours/days.
+-  RUL predictions in hours/days.
   
 **Deployment:**
 
