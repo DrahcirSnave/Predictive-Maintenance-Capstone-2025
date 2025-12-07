@@ -29,11 +29,11 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
   
 -	**Preprocessing:**
   
--- Pandas for data cleaning (remove NaNs, outliers via IQR method).
+ - Pandas for data cleaning (remove NaNs, outliers via IQR method).
 
---	NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
+ -	NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
 
---	Normalization using MinMaxScaler to ensure model stability.
+ -	Normalization using MinMaxScaler to ensure model stability.
  	
 - **Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
 
