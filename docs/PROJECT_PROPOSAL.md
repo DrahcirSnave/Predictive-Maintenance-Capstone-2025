@@ -28,9 +28,9 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 - **Data Sources:** NASA Turbofan Engine Degradation Dataset (CMAPSS) for training/validation, supplemented by synthetic data generated via Python’s numpy.random for edge cases. Sensors include vibration (Hz), temperature (°C), and pressure (kPa).
   
 - **Preprocessing:**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pandas for data cleaning (remove NaNs, outliers via IQR method).
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normalization using MinMaxScaler to ensure model stability.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pandas for data cleaning (remove NaNs, outliers via IQR method).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumPy for feature engineering (e.g., rolling mean, standard deviation over 10-second windows).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normalization using MinMaxScaler to ensure model stability.
  	
 - **Volume:** ~100,000 records for training, 20,000 for testing, ensuring robust validation.
 
@@ -38,11 +38,11 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
 
 - **Algorithms:**
   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Random Forest Classiﬁer:** 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Random Forest Classiﬁer:** 100 trees, max_depth=10, for failure type classiﬁcation (e.g., bearing wear, motor overload). Gini criterion for splits.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LSTM Neural Network:** 2 layers, 64 units each, for time-series forecasting of remaining useful life (RUL). Sequence length=50 timesteps, trained with Adam optimizer (learning rate=0.001).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LSTM Neural Network:** 2 layers, 64 units each, for time-series forecasting of remaining useful life (RUL). Sequence length=50 timesteps, trained with Adam optimizer (learning rate=0.001).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;;**Ensemble:** Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Ensemble:** Weighted voting (70% LSTM, 30% RF) for ﬁnal predictions to balance accuracy and interpretability.
 
 - **Frameworks:** Scikit-learn (v1.5.2) for Random Forest, TensorFlow (v2.17.0) for LSTM. Hyperparameter tuning via GridSearchCV (RF) and Keras Tuner (LSTM).
   
@@ -53,21 +53,21 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
   
 - **Frontend:** Streamlit (v1.39.0) dashboard displaying:
   
-&nbsp;&nbsp;&nbsp;&nbsp;Time-series plots (Matplotlib/Seaborn) of sensor data.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time-series plots (Matplotlib/Seaborn) of sensor data.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Failure probability (0-100%) with alert thresholds (>80% triggers a warning).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Failure probability (0-100%) with alert thresholds (>80% triggers a warning).
 
--&nbsp;&nbsp;&nbsp;&nbsp;RUL predictions in hours/days.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RUL predictions in hours/days.
   
 **Deployment:**
 
---	Prototype runs on Google Colab (16GB RAM, T4 GPU).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prototype runs on Google Colab (16GB RAM, T4 GPU).
 
--- Production-ready Docker container (Python 3.11 base image) for scalability.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Production-ready Docker container (Python 3.11 base image) for scalability.
 
--- Code versioned on GitHub with CI/CD via GitHub Actions for automated testing.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Code versioned on GitHub with CI/CD via GitHub Actions for automated testing.
 
-**Reﬁnements**
+**REFINEMENTS**
 
 - **Bias Mitigation:** Fairness-aware preprocessing using aif360 to detect and correct biases in failure predictions across equipment types.
   
@@ -75,39 +75,39 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
   
 - **Scalability:** Modular design supports multi-equipment environments; cloud-ready with AWS ECS compatibility.
 
-**Timeline and Milestone Planning**
+**TIMELINE AND MILESTONE PLANNING**
 
 - **Weeks 1-3:** Planning and Setup (08/21/2025 - 09/09/2025)
   
--- Tasks: Dataset acquisition, literature review, environment setup (Python 3.11, dependencies).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tasks: Dataset acquisition, literature review, environment setup (Python 3.11, dependencies).
 
--- Deliverable: Requirements document and data schema (CSV format).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deliverable: Requirements document and data schema (CSV format).
 
 - **Weeks 4-6:** Data and Model Development (09/10/2025 - 10/07/2025)
   
--- Tasks: EDA, feature engineering, train baseline Random Forest (accuracy >80%) and LSTM (MAE <10 hours for RUL).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tasks: EDA, feature engineering, train baseline Random Forest (accuracy >80%) and LSTM (MAE <10 hours for RUL).
 
--- Deliverable: Jupyter Notebook with EDA and model checkpoints.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deliverable: Jupyter Notebook with EDA and model checkpoints.
 
 - **Weeks 7-10:** System Integration (10/08/2025 - 10/28/2025)
 
--- Tasks: Build Streamlit dashboard, integrate models, test end-to-end pipeline.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tasks: Build Streamlit dashboard, integrate models, test end-to-end pipeline.
 
--- Deliverable: Functional prototype demo (video recording).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deliverable: Functional prototype demo (video recording).
 
 - **Weeks 9-10:** Testing and Optimization (10/29/2025 - 11/18/2025)
 
---Tasks: Validate on test set, achieve >85% accuracy, 80% precision/recall, <2s dashboard latency.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tasks: Validate on test set, achieve >85% accuracy, 80% precision/recall, <2s dashboard latency.
 
--- Deliverable: Performance report with confusion matrix, ROC-AUC, and SHAP plots.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deliverable: Performance report with confusion matrix, ROC-AUC, and SHAP plots.
 
 - **Weeks 11-12:** Finalization (11/19/2025 - 12/05/2025)
   
--- Tasks: Reﬁne code, document in README.md, prepare 10-minute presentation.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tasks: Reﬁne code, document in README.md, prepare 10-minute presentation.
 
--- Deliverable: GitHub repository, ﬁnal report (PDF), portfolio slides (PowerPoint).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deliverable: GitHub repository, ﬁnal report (PDF), portfolio slides (PowerPoint).
 
-**Resources Required**
+**RESOURCES REQUIRED**
 
 - **Hardware:** Laptop with 8GB RAM; Google Colab GPU.
   
@@ -119,20 +119,21 @@ There are predictive maintenance solutions available in the market (e.g. IBM Max
   
 - **Budget:** ~$20 for cloud credits; no other costs.
   
-**Success Metrics**
+**SUCCESS METRICS**
 
 - **Quantitative:**
   
--- Model: Accuracy >85%, Precision/Recall >80%, F1-score >0.82, RUL MAE <20 hours.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Model: Accuracy >85%, Precision/Recall >80%, F1-score >0.82, RUL MAE <20 hours.
 
-o	Operational: 40% downtime reduction, 25% maintenance cost savings (simulated via cost models).
-o	System: Dashboard latency <2s, 99% uptime during testing.
-•	Qualitative:
-o	User satisfaction: >4.5/5 from mock technician survey (10 users).
-o	Documentation: 100% test coverage, clear README with setup instructions.
-o	Presentation: Covers technical, ethical, and business value; <10 minutes, >90% audience comprehension (mock panel feedback).
-Metrics tracked via MLﬂow (v2.17.0) for experiments and GitHub milestones.
-Educational Value
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operational: 40% downtime reduction, 25% maintenance cost savings (simulated via cost models).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System: Dashboard latency <2s, 99% uptime during testing.
+- **Qualitative:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User satisfaction: >4.5/5 from mock technician survey (10 users).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Documentation: 100% test coverage, clear README with setup instructions.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Presentation: Covers technical, ethical, and business value; <10 minutes, >90% audience comprehension (mock panel feedback).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Metrics tracked via MLﬂow (v2.17.0) for experiments and GitHub milestones.
+- **EDUCATIONAL VALUE**
+  
 Other than industry use, this project is a culmination of machine learning, software engineering, and ethical AI practices that are trained during the program. It will be a powerful academic demonstration as team members will have practical experience with end-to-end system design, data preprocessing and model training, and deployment and communication with stakeholders.
 Risk Assessment
 Risk	Probability  Impact  Mitigation
